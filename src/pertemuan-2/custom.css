@@ -1,0 +1,93 @@
+/* Styling untuk keseluruhan halaman */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe4ec, #ffd6e7, #fff0f5);
+    color: #444;
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container utama */
+.card {
+    max-width: 600px;
+    width: 100%;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(255, 182, 193, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease;
+}
+
+/* Efek hover */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(255, 182, 193, 0.5);
+}
+
+/* Header utama */
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #ff6fa5;
+    margin-bottom: 10px;
+}
+
+/* Garis pemisah */
+hr {
+    border: none;
+    height: 3px;
+    width: 70px;
+    margin: 20px auto;
+    background: linear-gradient(to right, #ff9fc3, #ff6fa5);
+    border-radius: 10px;
+}
+
+/* Bagian informasi */
+.info {
+    margin-top: 10px;
+}
+
+/* Baris data */
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+/* Label kiri */
+.label {
+    font-weight: 600;
+    color: #666;
+}
+
+/* Value kanan */
+.value {
+    color: #333;
+}
+
+/* Greeting */
+small {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* Animasi muncul */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
