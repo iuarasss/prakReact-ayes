@@ -1,0 +1,265 @@
+[
+  {
+    "id": 1,
+    "name": "Pantai Kuta",
+    "location": "Bali",
+    "category": "Pantai",
+    "rating": 4.7,
+    "image": "https://images.pexels.com/photos/36313551/pexels-photo-36313551.jpeg?_gl=1*1bbzwgf*_ga*NzUwMjU1MDY5LjE3NzY4NzM0MTc.*_ga_8JE65Q40S6*czE3NzY4NzM0MTYkbzEkZzEkdDE3NzY4NzM0MjUkajUxJGwwJGgw",
+    "details": {
+      "description": "Pantai terkenal dengan sunset indah.",
+      "price": { "ticket": 15000, "parking": 5000 },
+      "facilities": ["Toilet", "Parkir", "Cafe"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Gunung Bromo",
+    "location": "Jawa Timur",
+    "category": "Gunung",
+    "rating": 4.8,
+    "image": "https://images.pexels.com/photos/29231602/pexels-photo-29231602.jpeg",
+    "details": {
+      "description": "Gunung dengan pemandangan sunrise terbaik.",
+      "price": { "ticket": 30000, "guide": 100000 },
+      "facilities": ["Jeep", "Guide", "Penginapan"]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Danau Toba",
+    "location": "Sumatera Utara",
+    "category": "Danau",
+    "rating": 4.6,
+    "image": "https://images.pexels.com/photos/15901135/pexels-photo-15901135.jpeg",
+    "details": {
+      "description": "Danau vulkanik terbesar di Asia Tenggara.",
+      "price": { "ticket": 10000, "boat": 20000 },
+      "facilities": ["Perahu", "Hotel", "Restoran"]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Raja Ampat",
+    "location": "Papua",
+    "category": "Pantai",
+    "rating": 4.9,
+    "image": "https://images.pexels.com/photos/32157316/pexels-photo-32157316.jpeg",
+    "details": {
+      "description": "Surga bawah laut Indonesia.",
+      "price": { "ticket": 100000, "diving": 500000 },
+      "facilities": ["Diving", "Resort", "Guide"]
+    }
+  },
+  {
+    "id": 5,
+    "name": "Candi Borobudur",
+    "location": "Jawa Tengah",
+    "category": "Sejarah",
+    "rating": 4.8,
+    "image": "https://images.pexels.com/photos/34034297/pexels-photo-34034297.jpeg",
+    "details": {
+      "description": "Candi Buddha terbesar di dunia.",
+      "price": { "ticket": 50000, "guide": 75000 },
+      "facilities": ["Guide", "Toilet", "Parkir"]
+    }
+  },
+
+  {
+    "id": 6,
+    "name": "Pulau Komodo",
+    "location": "NTT",
+    "category": "Pantai",
+    "rating": 4.9,
+    "image": "https://images.pexels.com/photos/8856172/pexels-photo-8856172.jpeg",
+    "details": {
+      "description": "Habitat asli komodo.",
+      "price": { "ticket": 75000, "boat": 150000 },
+      "facilities": ["Guide", "Perahu", "Hotel"]
+    }
+  },
+  {
+    "id": 7,
+    "name": "Gunung Rinjani",
+    "location": "NTB",
+    "category": "Gunung",
+    "rating": 4.7,
+    "image": "https://images.pexels.com/photos/4870647/pexels-photo-4870647.jpeg",
+    "details": {
+      "description": "Gunung favorit pendaki.",
+      "price": { "ticket": 25000, "guide": 120000 },
+      "facilities": ["Camping", "Guide", "Porter"]
+    }
+  },
+  {
+    "id": 8,
+    "name": "Taman Mini Indonesia Indah",
+    "location": "Jakarta",
+    "category": "Taman",
+    "rating": 4.5,
+    "image": "https://images.pexels.com/photos/2048893/pexels-photo-2048893.jpeg",
+    "details": {
+      "description": "Miniatur budaya Indonesia.",
+      "price": { "ticket": 20000, "parkir": 5000 },
+      "facilities": ["Wahana", "Toilet", "Restoran"]
+    }
+  },
+  {
+    "id": 9,
+    "name": "Kawah Ijen",
+    "location": "Jawa Timur",
+    "category": "Gunung",
+    "rating": 4.7,
+    "image": "https://images.pexels.com/photos/27272724/pexels-photo-27272724.jpeg",
+    "details": {
+      "description": "Blue fire yang langka.",
+      "price": { "ticket": 25000, "guide": 80000 },
+      "facilities": ["Guide", "Masker", "Toilet"]
+    }
+  },
+  {
+    "id": 10,
+    "name": "Pantai Parangtritis",
+    "location": "Yogyakarta",
+    "category": "Pantai",
+    "rating": 4.4,
+    "image": "https://images.pexels.com/photos/9572181/pexels-photo-9572181.jpeg",
+    "details": {
+      "description": "Pantai dengan legenda mistis.",
+      "price": { "ticket": 10000, "parkir": 3000 },
+      "facilities": ["ATV", "Toilet", "Warung"]
+    }
+  },
+
+  {
+    "id": 11,
+    "name": "Trans Studio Bandung",
+    "location": "Bandung",
+    "category": "Taman",
+    "rating": 4.6,
+    "image": "https://images.pexels.com/photos/32327669/pexels-photo-32327669.jpeg",
+    "details": {
+      "description": "Taman hiburan indoor terbesar.",
+      "price": { "ticket": 200000, "vip": 350000 },
+      "facilities": ["Wahana", "Food Court", "AC"]
+    }
+  },
+  {
+    "id": 12,
+    "name": "Bukit Tinggi",
+    "location": "Sumatera Barat",
+    "category": "Sejarah",
+    "rating": 4.5,
+    "image": "https://images.pexels.com/photos/2328371/pexels-photo-2328371.jpeg",
+    "details": {
+      "description": "Jam Gadang ikon terkenal.",
+      "price": { "ticket": 5000, "guide": 50000 },
+      "facilities": ["Guide", "Parkir", "Kuliner"]
+    }
+  },
+  {
+    "id": 13,
+    "name": "Pulau Belitung",
+    "location": "Bangka Belitung",
+    "category": "Pantai",
+    "rating": 4.7,
+    "image": "https://images.pexels.com/photos/35111920/pexels-photo-35111920.jpeg",
+    "details": {
+      "description": "Pantai batu granit unik.",
+      "price": { "ticket": 20000, "boat": 50000 },
+      "facilities": ["Perahu", "Hotel", "Guide"]
+    }
+  },
+  {
+    "id": 14,
+    "name": "Gunung Merapi",
+    "location": "Yogyakarta",
+    "category": "Gunung",
+    "rating": 4.6,
+    "image": "https://images.pexels.com/photos/36011000/pexels-photo-36011000.jpeg",
+    "details": {
+      "description": "Gunung aktif paling terkenal.",
+      "price": { "ticket": 15000, "jeep": 100000 },
+      "facilities": ["Jeep", "Guide", "Parkir"]
+    }
+  },
+  {
+    "id": 15,
+    "name": "Pulau Seribu",
+    "location": "Jakarta",
+    "category": "Pantai",
+    "rating": 4.5,
+    "image": "https://images.pexels.com/photos/7928070/pexels-photo-7928070.jpeg",
+    "details": {
+      "description": "Liburan dekat Jakarta.",
+      "price": { "ticket": 50000, "boat": 80000 },
+      "facilities": ["Resort", "Snorkeling", "Guide"]
+    }
+  },
+
+  {
+    "id": 16,
+    "name": "Lembang",
+    "location": "Bandung",
+    "category": "Taman",
+    "rating": 4.4,
+    "image": "https://images.pexels.com/photos/751257/pexels-photo-751257.jpeg",
+    "details": {
+      "description": "Wisata keluarga populer.",
+      "price": { "ticket": 25000, "wahana": 50000 },
+      "facilities": ["Cafe", "Spot Foto", "Toilet"]
+    }
+  },
+  {
+    "id": 17,
+    "name": "Labuan Bajo",
+    "location": "NTT",
+    "category": "Pantai",
+    "rating": 4.9,
+    "image": "https://images.pexels.com/photos/16609698/pexels-photo-16609698.jpeg",
+    "details": {
+      "description": "Gerbang menuju Komodo.",
+      "price": { "ticket": 50000, "boat": 200000 },
+      "facilities": ["Hotel", "Guide", "Perahu"]
+    }
+  },
+  {
+    "id": 18,
+    "name": "Pantai Pink",
+    "location": "NTT",
+    "category": "Pantai",
+    "rating": 4.8,
+    "image": "https://images.pexels.com/photos/35864358/pexels-photo-35864358.jpeg",
+    "details": {
+      "description": "Pantai berpasir merah muda.",
+      "price": { "ticket": 75000, "boat": 150000 },
+      "facilities": ["Snorkeling", "Guide", "Perahu"]
+    }
+  },
+  {
+    "id": 19,
+    "name": "Tangkuban Perahu",
+    "location": "Bandung",
+    "category": "Gunung",
+    "rating": 4.5,
+    "image": "https://images.pexels.com/photos/33023803/pexels-photo-33023803.jpeg",
+    "details": {
+      "description": "Gunung dengan kawah aktif.",
+      "price": { "ticket": 30000, "guide": 60000 },
+      "facilities": ["Guide", "Toilet", "Parkir"]
+    }
+  },
+  {
+    "id": 20,
+    "name": "Malioboro",
+    "location": "Yogyakarta",
+    "category": "Sejarah",
+    "rating": 4.6,
+    "image": "https://images.pexels.com/photos/15288578/pexels-photo-15288578.jpeg",
+    "details": {
+      "description": "Pusat wisata belanja.",
+      "price": { "ticket": 0, "parkir": 5000 },
+      "facilities": ["Kuliner", "Transportasi", "Hotel"]
+    }
+  }
+]
