@@ -5,44 +5,48 @@ export default function Navbar() {
   const isAdmin = location.pathname === "/admin";
 
   return (
-    <header className="sticky top-0 w-full bg-white/70 backdrop-blur-xl border-b border-emerald-50/50 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        
-        {/* Logo - Gradasi Hijau Soft ke Pink Soft */}
-        <Link to="/" className="flex items-center">
-          <h1 className="font-extrabold text-2xl tracking-tighter bg-gradient-to-r from-emerald-400 to-rose-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+    <div className="fixed top-6 left-0 right-0 z-50 px-4">
+      {" "}
+      {/* Container luar untuk memberi jarak dari tepi layar */}
+      <header className="max-w-6xl mx-auto px-6 py-3 bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(244,63,94,0.1)] rounded-[2rem] flex justify-between items-center">
+        {/* KIRI: Logo - Gradasi Pink Unyu */}
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="w-8 h-8 bg-gradient-to-br from-rose-400 to-pink-300 rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+            <span className="text-white text-xs"></span>
+          </div>
+          <h1 className="font-extrabold text-xl tracking-tighter bg-gradient-to-r from-rose-500 to-pink-400 bg-clip-text text-transparent">
             WisataApp.
           </h1>
         </Link>
-        
-        {/* Sliding Tab */}
-        <div className="relative flex items-center bg-slate-50 p-1.5 rounded-full border border-slate-100 shadow-inner">
-          <div 
-            className={`absolute top-1.5 bottom-1.5 w-[100px] bg-white rounded-full shadow-[0_2px_10px_-2px_rgba(16,185,129,0.15)] transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${
-              isAdmin ? "translate-x-[100px]" : "translate-x-0"
+
+        {/* KANAN: Sliding Tab Control */}
+        <div className="relative flex items-center bg-slate-100/50 p-1 rounded-full border border-white/50 shadow-inner">
+          {/* Pill yang meluncur */}
+          <div
+            className={`absolute top-1 bottom-1 w-[90px] bg-white rounded-full shadow-sm transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${
+              isAdmin ? "translate-x-[90px]" : "translate-x-0"
             }`}
           ></div>
 
-          <Link 
-            to="/" 
-            className={`relative z-10 w-[100px] text-center py-2 text-sm font-bold transition-colors duration-300 ${
-              !isAdmin ? "text-emerald-600" : "text-slate-400 hover:text-rose-400"
+          <Link
+            to="/"
+            className={`relative z-10 w-[90px] text-center py-2 text-xs font-bold transition-colors duration-300 ${
+              !isAdmin ? "text-rose-500" : "text-slate-400 hover:text-rose-400"
             }`}
           >
-            Explore
+            Guest
           </Link>
-          
-          <Link 
-            to="/admin" 
-            className={`relative z-10 w-[100px] text-center py-2 text-sm font-bold transition-colors duration-300 ${
-              isAdmin ? "text-emerald-600" : "text-slate-400 hover:text-rose-400"
+
+          <Link
+            to="/admin"
+            className={`relative z-10 w-[90px] text-center py-2 text-xs font-bold transition-colors duration-300 ${
+              isAdmin ? "text-rose-500" : "text-slate-400 hover:text-rose-400"
             }`}
           >
             Admin
           </Link>
         </div>
-
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
