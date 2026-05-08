@@ -1,19 +1,32 @@
-import React from "react";
-import "./App.css";
+import React, { Suspense } from "react";
+import "./assets/tailwind.css";
 
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import Dashboard from "./pages/Dashboard";
-import Orders from "./pages/Orders";
-import Customers from "./pages/Customers";
+// import Dashboard from "./pages/Dashboard";
+// import Orders from "./pages/Orders";
+// import Customers from "./pages/Customers";
 
 import Error400 from "./pages/Error400";
 import Error401 from "./pages/Error401";
 import Error403 from "./pages/Error403";
-import NotFound from "./pages/NotFound";
+import Loading from "./components/Loading";
+// import NotFound from "./pages/NotFound";
+// import MainLayout from "./layouts/MainLayout";
+// import AuthLayout from "./layouts/AuthLayout";
+// import Login from "./pages/auth/Login";
+// import Register from "./pages/auth/Register";
+// import Forgot from "./pages/auth/Forgot";
 
-import Sidebar from "./layouts/Sidebar";
-import Header from "./layouts/Header";
+const Dashboard = React.lazy(() => import("./pages/Dashboard"))
+const Orders = React.lazy(() => import("./pages/Orders"))
+const Customers = React.lazy(() => import("./pages/Customers"))
+const NotFound = React.lazy(() => import("./pages/NotFound"))
+const Login = React.lazy(() => import("./pages/auth/Login"))
+const Forgot = React.lazy(() => import("./pages/auth/Forgot"))
+const Register = React.lazy(() => import("./pages/auth/Register"))
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"))
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
 
 function Explore() {
   return <h1 className="text-3xl font-bold">Halaman Explore 🔍</h1>;
@@ -31,11 +44,7 @@ function App() {
   const location = useLocation();
 
   // Route yang tidak memakai sidebar & header
-  const hideLayoutRoutes = [
-    "/error400",
-    "/error401",
-    "/error403",
-  ];
+  const hideLayoutRoutes = ["/error400", "/error401", "/error403"];
 
   const hideLayout = hideLayoutRoutes.includes(location.pathname);
 
@@ -50,42 +59,34 @@ function App() {
     );
   }
 
-  // Layout normal
   return (
-    <div className="flex min-h-screen bg-[#F4F7FE]">
+    <Suspense fallback={<Loading/>}>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Dashboard />} />
 
-      {/* Sidebar */}
-      <Sidebar />
+        <Route path="/explore" element={<Explore />} />
 
-      {/* Content */}
-      <div className="flex-1 flex flex-col">
+        <Route path="/profile" element={<Profile />} />
 
-        {/* Header */}
-        <Header />
+        <Route path="/orders" element={<Orders />} />
 
-        {/* Pages */}
-        <main className="flex-1 p-8 overflow-y-auto">
+        <Route path="/detail" element={<OrderDetail />} />
 
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
+        <Route path="/customers" element={<Customers />} />
 
-            <Route path="/explore" element={<Explore />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
 
-            <Route path="/profile" element={<Profile />} />
-
-            <Route path="/orders" element={<Orders />} />
-
-            <Route path="/detail" element={<OrderDetail />} />
-
-            <Route path="/customers" element={<Customers />} />
-
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-
-        </main>
-      </div>
-    </div>
+      <Route element={<AuthLayout />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot" element={<Forgot />} />
+      </Route>
+    </Routes>
+    </Suspense>
   );
+
 }
 
 export default App;
