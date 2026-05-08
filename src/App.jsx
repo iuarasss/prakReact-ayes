@@ -1,63 +1,87 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-// Komponen Navbar
-const Navbar = () => (
-  <nav className="navbar">
-    <div className="logo"><strong>YouTube</strong></div>
-    <div className="search-bar">
-      <input type="text" placeholder="Telusuri" />
-      <button>🔍</button>
-    </div>
-    <div className="user-icons">Profile</div>
-  </nav>
-);
+import { Routes, Route, useLocation } from "react-router-dom";
 
-// Komponen Sidebar
-const Sidebar = () => (
-  <aside className="sidebar">
-    <div className="sidebar-item">🏠 Beranda</div>
-    <div className="sidebar-item">📱 Shorts</div>
-    <div className="sidebar-item">📺 Subscribe</div>
-    <hr style={{ margin: '10px 0', border: '0.5px solid #eee' }} />
-    <div className="sidebar-item">📚 Koleksi</div>
-  </aside>
-);
+import Dashboard from "./pages/Dashboard";
+import Orders from "./pages/Orders";
+import Customers from "./pages/Customers";
 
-// Komponen Video Card (Data statis untuk contoh)
-const VideoCard = ({ title, channel, views, time }) => (
-  <div className="video-card">
-    <img className="thumbnail" src="https://via.placeholder.com/320x180" alt="thumbnail" />
-    <div className="video-info">
-      <div className="channel-icon"></div>
-      <div className="details">
-        <h3>{title}</h3>
-        <p>{channel}</p>
-        <p>{views} x ditonton • {time} yang lalu</p>
-      </div>
-    </div>
-  </div>
-);
+import Error400 from "./pages/Error400";
+import Error401 from "./pages/Error401";
+import Error403 from "./pages/Error403";
+import NotFound from "./pages/NotFound";
+
+import Sidebar from "./layouts/Sidebar";
+import Header from "./layouts/Header";
+
+function Explore() {
+  return <h1 className="text-3xl font-bold">Halaman Explore 🔍</h1>;
+}
+
+function Profile() {
+  return <h1 className="text-3xl font-bold">Halaman Profile 👤</h1>;
+}
+
+function OrderDetail() {
+  return <h1 className="text-3xl font-bold">Halaman Detail 📄</h1>;
+}
 
 function App() {
-  const videoData = [
-    { id: 1, title: "Belajar React untuk Pemula", channel: "Coding Indo", views: "10rb", time: "2 jam" },
-    { id: 2, title: "Tips Menjadi Senior Developer", channel: "Tech Guru", views: "50rb", time: "1 hari" },
-    { id: 3, title: "Review Setup Minimalis 2024", channel: "Workspace", views: "100rb", time: "5 jam" },
-    { id: 4, title: "Membangun Startup dari Nol", channel: "Founder Talk", views: "5rb", time: "10 menit" },
-    { id: 5, title: "Kenapa Harus Pindah ke React?", channel: "Dev School", views: "25rb", time: "3 hari" },
-    { id: 6, title: "Unboxing Laptop Masa Depan", channel: "Gadget Review", views: "1jt", time: "1 minggu" },
+  const location = useLocation();
+
+  // Route yang tidak memakai sidebar & header
+  const hideLayoutRoutes = [
+    "/error400",
+    "/error401",
+    "/error403",
   ];
 
+  const hideLayout = hideLayoutRoutes.includes(location.pathname);
+
+  // Jika halaman error → tanpa sidebar/header
+  if (hideLayout) {
+    return (
+      <Routes>
+        <Route path="/error400" element={<Error400 />} />
+        <Route path="/error401" element={<Error401 />} />
+        <Route path="/error403" element={<Error403 />} />
+      </Routes>
+    );
+  }
+
+  // Layout normal
   return (
-    <div className="app">
-      <Navbar />
-      <div className="main-container">
-        <Sidebar />
-        <main className="video-grid">
-          {videoData.map(video => (
-            <VideoCard key={video.id} {...video} />
-          ))}
+    <div className="flex min-h-screen bg-[#F4F7FE]">
+
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Content */}
+      <div className="flex-1 flex flex-col">
+
+        {/* Header */}
+        <Header />
+
+        {/* Pages */}
+        <main className="flex-1 p-8 overflow-y-auto">
+
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+
+            <Route path="/explore" element={<Explore />} />
+
+            <Route path="/profile" element={<Profile />} />
+
+            <Route path="/orders" element={<Orders />} />
+
+            <Route path="/detail" element={<OrderDetail />} />
+
+            <Route path="/customers" element={<Customers />} />
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+
         </main>
       </div>
     </div>
