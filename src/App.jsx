@@ -27,6 +27,7 @@ const Forgot = React.lazy(() => import("./pages/auth/Forgot"))
 const Register = React.lazy(() => import("./pages/auth/Register"))
 const MainLayout = React.lazy(() => import("./layouts/MainLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
+const Components = React.lazy(() => import("./pages/Components"))
 
 function Explore() {
   return <h1 className="text-3xl font-bold">Halaman Explore 🔍</h1>;
@@ -74,6 +75,8 @@ function App() {
         <Route path="/detail" element={<OrderDetail />} />
 
         <Route path="/customers" element={<Customers />} />
+
+        <Route path="/components" element={<Components />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>

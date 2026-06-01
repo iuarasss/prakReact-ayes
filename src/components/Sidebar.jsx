@@ -3,6 +3,7 @@ import {
   FiShoppingBag,
   FiUsers,
   FiAlertTriangle,
+  FiLayers,
 } from "react-icons/fi";
 
 import { NavLink } from "react-router-dom";
@@ -30,13 +31,10 @@ export default function Sidebar() {
         bg-white px-8 py-10
       "
     >
-
       {/* TOP */}
       <div>
-
         {/* LOGO */}
         <div className="mb-12">
-
           <h1
             className="
               text-4xl font-extrabold
@@ -47,15 +45,11 @@ export default function Sidebar() {
             <span className="text-[#00B074]">.</span>
           </h1>
 
-          <p className="mt-1 text-sm text-gray-400">
-            Modern Admin Dashboard
-          </p>
-
+          <p className="mt-1 text-sm text-gray-400">Modern Admin Dashboard</p>
         </div>
 
         {/* MENU */}
         <ul className="flex flex-col gap-3">
-
           <li>
             <NavLink to="/" className={menuClass}>
               <FiGrid size={20} />
@@ -74,6 +68,13 @@ export default function Sidebar() {
             <NavLink to="/customer" className={menuClass}>
               <FiUsers size={20} />
               Customers
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/components" className={menuClass}>
+              <FiLayers size={20} />
+              Components
             </NavLink>
           </li>
 
@@ -99,13 +100,11 @@ export default function Sidebar() {
               Error 403
             </NavLink>
           </li>
-
         </ul>
       </div>
 
       {/* BOTTOM */}
       <div>
-
         {/* CARD */}
         <div
           className="
@@ -114,9 +113,7 @@ export default function Sidebar() {
             p-5 text-white
           "
         >
-
           <div className="relative z-10">
-
             <p
               className="
                 text-[13px] leading-relaxed
@@ -136,13 +133,9 @@ export default function Sidebar() {
                 hover:bg-gray-50
               "
             >
-              <span className="text-lg leading-none">
-                +
-              </span>
-
+              <span className="text-lg leading-none">+</span>
               Add Menus
             </button>
-
           </div>
 
           {/* CIRCLE */}
@@ -154,7 +147,6 @@ export default function Sidebar() {
               bg-white/20
             "
           >
-
             <img
               src="https://i.pravatar.cc/100"
               alt="avatar"
@@ -163,14 +155,11 @@ export default function Sidebar() {
                 object-cover
               "
             />
-
           </div>
-
         </div>
 
         {/* FOOTER */}
         <div className="mt-8">
-
           <p className="text-sm font-bold text-gray-500">
             Sedap Restaurant Admin Dashboard
           </p>
@@ -178,9 +167,7 @@ export default function Sidebar() {
           <p className="mt-1 text-xs text-gray-400">
             © 2025 All Right Reserved
           </p>
-
         </div>
-
       </div>
     </div>
   );
