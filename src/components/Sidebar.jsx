@@ -3,7 +3,11 @@ import {
   FiShoppingBag,
   FiUsers,
   FiAlertTriangle,
+<<<<<<< HEAD
   FiLayers,
+=======
+  FiBox, // icon product
+>>>>>>> 7fa8fd13bf71bc24604aad8bf0430f7f60c7c48f
 } from "react-icons/fi";
 
 import { NavLink } from "react-router-dom";
@@ -61,6 +65,14 @@ export default function Sidebar() {
             <NavLink to="/orders" className={menuClass}>
               <FiShoppingBag size={20} />
               Orders
+            </NavLink>
+          </li>
+
+          {/* PRODUCT MENU */}
+          <li>
+            <NavLink to="/product" className={menuClass}>
+              <FiBox size={20} />
+              Product
             </NavLink>
           </li>
 

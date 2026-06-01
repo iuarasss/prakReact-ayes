@@ -3,21 +3,12 @@ import "./assets/tailwind.css";
 
 import { Routes, Route, useLocation } from "react-router-dom";
 
-// import Dashboard from "./pages/Dashboard";
-// import Orders from "./pages/Orders";
-// import Customers from "./pages/Customers";
-
 import Error400 from "./pages/Error400";
 import Error401 from "./pages/Error401";
 import Error403 from "./pages/Error403";
 import Loading from "./components/Loading";
-// import NotFound from "./pages/NotFound";
-// import MainLayout from "./layouts/MainLayout";
-// import AuthLayout from "./layouts/AuthLayout";
-// import Login from "./pages/auth/Login";
-// import Register from "./pages/auth/Register";
-// import Forgot from "./pages/auth/Forgot";
 
+<<<<<<< HEAD
 const Dashboard = React.lazy(() => import("./pages/Dashboard"))
 const Orders = React.lazy(() => import("./pages/Orders"))
 const Customers = React.lazy(() => import("./pages/Customers"))
@@ -28,6 +19,23 @@ const Register = React.lazy(() => import("./pages/auth/Register"))
 const MainLayout = React.lazy(() => import("./layouts/MainLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
 const Components = React.lazy(() => import("./pages/Components"))
+=======
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const Orders = React.lazy(() => import("./pages/Orders"));
+const Customers = React.lazy(() => import("./pages/Customers"));
+const Product = React.lazy(() => import("./pages/Product"));
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail"))
+
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+
+const Login = React.lazy(() => import("./pages/auth/Login"));
+const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
+const Register = React.lazy(() => import("./pages/auth/Register"));
+
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
+
+>>>>>>> 7fa8fd13bf71bc24604aad8bf0430f7f60c7c48f
 
 function Explore() {
   return <h1 className="text-3xl font-bold">Halaman Explore 🔍</h1>;
@@ -44,12 +52,12 @@ function OrderDetail() {
 function App() {
   const location = useLocation();
 
-  // Route yang tidak memakai sidebar & header
+  // Route tanpa sidebar/header
   const hideLayoutRoutes = ["/error400", "/error401", "/error403"];
 
   const hideLayout = hideLayoutRoutes.includes(location.pathname);
 
-  // Jika halaman error → tanpa sidebar/header
+  // Halaman error tanpa layout
   if (hideLayout) {
     return (
       <Routes>
@@ -61,35 +69,55 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<Loading/>}>
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Dashboard />} />
+    <Suspense fallback={<Loading />}>
+      <Routes>
 
-        <Route path="/explore" element={<Explore />} />
+        {/* MAIN LAYOUT */}
+        <Route element={<MainLayout />}>
 
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Dashboard />} />
 
-        <Route path="/orders" element={<Orders />} />
+          <Route path="/explore" element={<Explore />} />
 
-        <Route path="/detail" element={<OrderDetail />} />
+          <Route path="/profile" element={<Profile />} />
 
-        <Route path="/customers" element={<Customers />} />
+          <Route path="/orders" element={<Orders />} />
 
+<<<<<<< HEAD
         <Route path="/components" element={<Components />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>
+=======
+          <Route path="/detail" element={<OrderDetail />} />
+>>>>>>> 7fa8fd13bf71bc24604aad8bf0430f7f60c7c48f
 
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot" element={<Forgot />} />
-      </Route>
-    </Routes>
+          {/* CUSTOMER ROUTE */}
+          <Route path="/customer" element={<Customers />} />
+          <Route path="/products/:id" element={<ProductDetail />} /> 
+
+          {/* PRODUCT ROUTE */}
+          <Route path="/product" element={<Product />} />
+
+          {/* NOT FOUND */}
+          <Route path="*" element={<NotFound />} />
+
+        </Route>
+
+        {/* AUTH LAYOUT */}
+        <Route element={<AuthLayout />}>
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/register" element={<Register />} />
+
+          <Route path="/forgot" element={<Forgot />} />
+
+        </Route>
+
+      </Routes>
     </Suspense>
   );
-
 }
 
 export default App;
