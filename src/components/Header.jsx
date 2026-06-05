@@ -1,7 +1,6 @@
 import {
   FiSearch,
   FiBell,
-  FiMessageSquare,
   FiGift,
   FiSettings,
 } from "react-icons/fi";
@@ -45,12 +44,6 @@ export default function Header() {
               total: 2,
               bg: "bg-blue-50",
               text: "text-blue-500",
-            },
-            {
-              icon: <FiMessageSquare size={18} />,
-              total: 5,
-              bg: "bg-green-50",
-              text: "text-green-500",
             },
             {
               icon: <FiGift size={18} />,
@@ -97,7 +90,7 @@ export default function Header() {
         ">
           <div className="text-right">
             <p className="text-xs text-gray-400">
-              Welcome Back 👋
+              Halo👋
             </p>
 
             <p className="text-sm font-semibold text-gray-700">

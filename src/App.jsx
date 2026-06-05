@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import "./assets/tailwind.css";
 
 import { Routes, Route, useLocation } from "react-router-dom";

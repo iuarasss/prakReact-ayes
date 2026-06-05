@@ -1,4 +1,6 @@
 import React from 'react';
+import {Button} from '../../components/ui/button';
+
 
 const FiturXyz = () => {
   return (
@@ -9,6 +11,7 @@ const FiturXyz = () => {
           Ini halaman Fitur Xyz
         </p>
       </div>
+      <Button>TES</Button>
     </div>
   );
 };
