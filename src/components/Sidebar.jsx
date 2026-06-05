@@ -4,6 +4,7 @@ import {
   FiUsers,
   FiAlertTriangle,
   FiLayers,
+  FiTool,
 } from "react-icons/fi";
 
 import { NavLink } from "react-router-dom";
@@ -45,7 +46,9 @@ export default function Sidebar() {
             <span className="text-[#00B074]">.</span>
           </h1>
 
-          <p className="mt-1 text-sm text-gray-400">Modern Admin Dashboard</p>
+          <p className="mt-1 text-sm text-gray-400">
+            Modern Admin Dashboard
+          </p>
         </div>
 
         {/* MENU */}
@@ -78,6 +81,14 @@ export default function Sidebar() {
             </NavLink>
           </li>
 
+          {/* MENU BARU */}
+          <li>
+            <NavLink to="/fiturxyz" className={menuClass}>
+              <FiTool size={20} />
+              Fitur XYZ
+            </NavLink>
+          </li>
+
           <div className="my-5 border-t border-gray-100"></div>
 
           <li>
@@ -105,7 +116,6 @@ export default function Sidebar() {
 
       {/* BOTTOM */}
       <div>
-        {/* CARD */}
         <div
           className="
             relative overflow-hidden
@@ -138,7 +148,6 @@ export default function Sidebar() {
             </button>
           </div>
 
-          {/* CIRCLE */}
           <div
             className="
               absolute -bottom-2 -right-2
@@ -158,7 +167,6 @@ export default function Sidebar() {
           </div>
         </div>
 
-        {/* FOOTER */}
         <div className="mt-8">
           <p className="text-sm font-bold text-gray-500">
             Sedap Restaurant Admin Dashboard

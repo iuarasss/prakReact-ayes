@@ -18,16 +18,17 @@ import Loading from "./components/Loading";
 // import Register from "./pages/auth/Register";
 // import Forgot from "./pages/auth/Forgot";
 
-const Dashboard = React.lazy(() => import("./pages/Dashboard"))
-const Orders = React.lazy(() => import("./pages/Orders"))
-const Customers = React.lazy(() => import("./pages/Customers"))
-const NotFound = React.lazy(() => import("./pages/NotFound"))
-const Login = React.lazy(() => import("./pages/auth/Login"))
-const Forgot = React.lazy(() => import("./pages/auth/Forgot"))
-const Register = React.lazy(() => import("./pages/auth/Register"))
-const MainLayout = React.lazy(() => import("./layouts/MainLayout"))
-const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
-const Components = React.lazy(() => import("./pages/Components"))
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const Orders = React.lazy(() => import("./pages/Orders"));
+const Customers = React.lazy(() => import("./pages/Customers"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+const Login = React.lazy(() => import("./pages/auth/Login"));
+const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
+const Register = React.lazy(() => import("./pages/auth/Register"));
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
+const Components = React.lazy(() => import("./pages/Components"));
+const FiturXyz = lazy(() => import("./pages/FiturXyz"));
 
 function Explore() {
   return <h1 className="text-3xl font-bold">Halaman Explore 🔍</h1>;
@@ -61,35 +62,35 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<Loading/>}>
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Dashboard />} />
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
 
-        <Route path="/explore" element={<Explore />} />
+          <Route path="/explore" element={<Explore />} />
 
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
 
-        <Route path="/orders" element={<Orders />} />
+          <Route path="/orders" element={<Orders />} />
 
-        <Route path="/detail" element={<OrderDetail />} />
+          <Route path="/detail" element={<OrderDetail />} />
 
-        <Route path="/customers" element={<Customers />} />
+          <Route path="/customers" element={<Customers />} />
 
-        <Route path="/components" element={<Components />} />
+          <Route path="/components" element={<Components />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Route>
+          <Route path="/fitur-xyz" element={<FiturXyz />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
 
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot" element={<Forgot />} />
-      </Route>
-    </Routes>
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<Forgot />} />
+        </Route>
+      </Routes>
     </Suspense>
   );
-
 }
 
 export default App;
