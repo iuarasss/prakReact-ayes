@@ -89,6 +89,13 @@ export default function Sidebar() {
             </NavLink>
           </li>
 
+          <li>
+            <NavLink to="/notes" className={menuClass}>
+              <FiTool size={20} />
+              Note
+            </NavLink>
+          </li>
+
           <div className="my-5 border-t border-gray-100"></div>
 
           <li>

@@ -11,6 +11,7 @@ import Error400 from "./pages/Error400";
 import Error401 from "./pages/Error401";
 import Error403 from "./pages/Error403";
 import Loading from "./components/Loading";
+import Note from "./pages/Note";
 // import NotFound from "./pages/NotFound";
 // import MainLayout from "./layouts/MainLayout";
 // import AuthLayout from "./layouts/AuthLayout";
@@ -81,6 +82,7 @@ function App() {
 
           <Route path="/fitur-xyz" element={<FiturXyz />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/notes" element={<Note />} />
         </Route>
 
         <Route element={<AuthLayout />}>
