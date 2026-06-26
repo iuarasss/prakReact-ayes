@@ -4,8 +4,6 @@ export default function Error400() {
   return (
     <ErrorPage
       code="400"
-      description="Bad Request"
-      image="https://cdn-icons-png.flaticon.com/512/755/755014.png"
     />
   );
 }

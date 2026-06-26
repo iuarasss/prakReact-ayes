@@ -2,26 +2,16 @@ import React, { lazy, Suspense } from "react";
 import "./assets/tailwind.css";
 
 import { Routes, Route, useLocation } from "react-router-dom";
-
-// import Dashboard from "./pages/Dashboard";
-// import Orders from "./pages/Orders";
-// import Customers from "./pages/Customers";
-
 import Error400 from "./pages/Error400";
 import Error401 from "./pages/Error401";
 import Error403 from "./pages/Error403";
 import Loading from "./components/Loading";
 import Note from "./pages/Note";
-// import NotFound from "./pages/NotFound";
-// import MainLayout from "./layouts/MainLayout";
-// import AuthLayout from "./layouts/AuthLayout";
-// import Login from "./pages/auth/Login";
-// import Register from "./pages/auth/Register";
-// import Forgot from "./pages/auth/Forgot";
 
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const Orders = React.lazy(() => import("./pages/Orders"));
 const Customers = React.lazy(() => import("./pages/Customers"));
+const Product = React.lazy(() => import("./pages/Product"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
@@ -29,7 +19,9 @@ const Register = React.lazy(() => import("./pages/auth/Register"));
 const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
 const Components = React.lazy(() => import("./pages/Components"));
-const FiturXyz = lazy(() => import("./pages/FiturXyz"));
+const FiturXyz = React.lazy(() => import("./pages/FiturXyz"));
+const ProtectedRoute = React.lazy(() => import("./components/ProtectedRoute"));
+const DashboardMember = React.lazy(() => import("./pages/DashboardMember"));
 
 function Explore() {
   return <h1 className="text-3xl font-bold">Halaman Explore 🔍</h1>;
@@ -48,7 +40,7 @@ function App() {
 
   // Route yang tidak memakai sidebar & header
   const hideLayoutRoutes = ["/error400", "/error401", "/error403"];
-
+  const authRoutes = ["/login", "/register", "/forgot"];
   const hideLayout = hideLayoutRoutes.includes(location.pathname);
 
   // Jika halaman error → tanpa sidebar/header
@@ -65,30 +57,34 @@ function App() {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Dashboard />} />
-
-          <Route path="/explore" element={<Explore />} />
-
-          <Route path="/profile" element={<Profile />} />
-
-          <Route path="/orders" element={<Orders />} />
-
-          <Route path="/detail" element={<OrderDetail />} />
-
-          <Route path="/customers" element={<Customers />} />
-
-          <Route path="/components" element={<Components />} />
-
-          <Route path="/fitur-xyz" element={<FiturXyz />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/notes" element={<Note />} />
-        </Route>
-
+        {/* Auth routes — no sidebar */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
+        </Route>
+
+        {/* Protected routes — with sidebar */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <MainLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/member/dashboard" element={<DashboardMember />} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/products/:id" element={<Product />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/detail" element={<OrderDetail />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/components" element={<Components />} />
+          <Route path="/fitur-xyz" element={<FiturXyz />} />
+          <Route path="/notes" element={<Note />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>

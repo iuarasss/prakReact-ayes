@@ -1,3 +1,5 @@
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 import {
   FiGrid,
   FiShoppingBag,
@@ -5,6 +7,9 @@ import {
   FiAlertTriangle,
   FiLayers,
   FiTool,
+  FiFileText,
+  FiLogOut,
+  FiStar,
 } from "react-icons/fi";
 
 import { NavLink } from "react-router-dom";
@@ -23,6 +28,17 @@ const menuClass = ({ isActive }) =>
   `;
 
 export default function Sidebar() {
+  const { profile, signOut } = useAuth();
+  const navigate = useNavigate();
+  const role = profile?.role || "Guest";
+  const isAdmin = role === "Admin";
+  const isMember = role === "Member";
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/login");
+  };
+
   return (
     <div
       className="
@@ -47,47 +63,71 @@ export default function Sidebar() {
           </h1>
 
           <p className="mt-1 text-sm text-gray-400">
-            Modern Admin Dashboard
+            {isAdmin ? "Admin Dashboard" : "Member Area"}
           </p>
         </div>
 
         {/* MENU */}
         <ul className="flex flex-col gap-3">
+          {/* Member Dashboard — khusus Member */}
+          {isMember && (
+            <li>
+              <NavLink to="/member/dashboard" className={menuClass}>
+                <FiStar size={20} />
+                Dashboard Member
+              </NavLink>
+            </li>
+          )}
+
+          {/* Dashboard Admin — khusus Admin */}
+          {isAdmin && (
+            <li>
+              <NavLink to="/" className={menuClass}>
+                <FiGrid size={20} />
+                Dashboard
+              </NavLink>
+            </li>
+          )}
+
+          {/* Products — semua role bisa */}
           <li>
-            <NavLink to="/" className={menuClass}>
-              <FiGrid size={20} />
-              Dashboard
+            <NavLink to="/products" className={menuClass}>
+              <FiFileText size={20} />
+              Products
             </NavLink>
           </li>
 
-          <li>
-            <NavLink to="/orders" className={menuClass}>
-              <FiShoppingBag size={20} />
-              Orders
-            </NavLink>
-          </li>
+          {/* Orders — Admin & Member */}
+          {(isAdmin || isMember) && (
+            <li>
+              <NavLink to="/orders" className={menuClass}>
+                <FiShoppingBag size={20} />
+                Orders
+              </NavLink>
+            </li>
+          )}
 
-          <li>
-            <NavLink to="/customer" className={menuClass}>
-              <FiUsers size={20} />
-              Customers
-            </NavLink>
-          </li>
+          {/* Customers — khusus Admin */}
+          {isAdmin && (
+            <li>
+              <NavLink to="/customers" className={menuClass}>
+                <FiUsers size={20} />
+                Customers
+              </NavLink>
+            </li>
+          )}
 
-          <li>
-            <NavLink to="/components" className={menuClass}>
-              <FiLayers size={20} />
-              Components
-            </NavLink>
-          </li>
+          <div className="my-5 border-t border-gray-100"></div>
 
-          {/* MENU BARU */}
-          <li>
-            <NavLink to="/fiturxyz" className={menuClass}>
-              <FiTool size={20} />
-              Fitur XYZ
-            </NavLink>
-          </li>
+          {/* Components — semua authenticated */}
+          {(isAdmin || isMember) && (
+            <li>
+              <NavLink to="/components" className={menuClass}>
+                <FiLayers size={20} />
+                Components
+              </NavLink>
+            </li>
+          )}
 
           <li>
             <NavLink to="/notes" className={menuClass}>
@@ -96,89 +136,71 @@ export default function Sidebar() {
             </NavLink>
           </li>
 
+          {/* Fitur XYZ — khusus Admin */}
+          {isAdmin && (
+            <li>
+              <NavLink to="/fitur-xyz" className={menuClass}>
+                <FiTool size={20} />
+                Fitur XYZ
+              </NavLink>
+            </li>
+          )}
+
           <div className="my-5 border-t border-gray-100"></div>
 
-          <li>
-            <NavLink to="/error400" className={menuClass}>
-              <FiAlertTriangle size={18} />
-              Error 400
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/error401" className={menuClass}>
-              <FiAlertTriangle size={18} />
-              Error 401
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/error403" className={menuClass}>
-              <FiAlertTriangle size={18} />
-              Error 403
-            </NavLink>
-          </li>
+          {isAdmin && (
+            <>
+              <li>
+                <NavLink to="/error400" className={menuClass}>
+                  <FiAlertTriangle size={18} />
+                  Error 400
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/error401" className={menuClass}>
+                  <FiAlertTriangle size={18} />
+                  Error 401
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/error403" className={menuClass}>
+                  <FiAlertTriangle size={18} />
+                  Error 403
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
 
       {/* BOTTOM */}
       <div>
-        <div
-          className="
-            relative overflow-hidden
-            rounded-2xl bg-[#00B074]
-            p-5 text-white
-          "
-        >
-          <div className="relative z-10">
-            <p
-              className="
-                text-[13px] leading-relaxed
-                text-white w-[75%]
-              "
-            >
-              Please organize your menus through button below!
-            </p>
-
-            <button
-              className="
-                mt-4 flex items-center gap-2
-                rounded-lg bg-white
-                px-4 py-2 text-xs
-                font-semibold text-gray-800
-                shadow-sm transition-colors
-                hover:bg-gray-50
-              "
-            >
-              <span className="text-lg leading-none">+</span>
-              Add Menus
-            </button>
+        {/* User Info */}
+        <div className="mb-4 flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 p-4">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#00B074] text-sm font-bold text-white">
+            {(profile?.full_name || "User").charAt(0).toUpperCase()}
           </div>
-
-          <div
-            className="
-              absolute -bottom-2 -right-2
-              flex h-20 w-20 items-center
-              justify-center rounded-full
-              bg-white/20
-            "
-          >
-            <img
-              src="https://i.pravatar.cc/100"
-              alt="avatar"
-              className="
-                h-10 w-10 rounded-full
-                object-cover
-              "
-            />
+          <div className="flex-1 min-w-0">
+            <p className="truncate text-sm font-semibold text-gray-700">
+              {profile?.full_name || "User"}
+            </p>
+            <p className="text-xs text-gray-400 capitalize">{role}</p>
           </div>
         </div>
+
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-500 transition-all duration-200 hover:bg-red-50"
+        >
+          <FiLogOut size={18} />
+          Logout
+        </button>
 
         <div className="mt-8">
           <p className="text-sm font-bold text-gray-500">
             Sedap Restaurant Admin Dashboard
           </p>
-
           <p className="mt-1 text-xs text-gray-400">
             © 2025 All Right Reserved
           </p>

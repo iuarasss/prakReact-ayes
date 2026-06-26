@@ -3,12 +3,23 @@ import {
   FiBell,
   FiGift,
   FiSettings,
+  FiLogOut,
 } from "react-icons/fi";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/login");
+  };
+
   return (
     <div className="sticky top-0 z-40 flex items-center justify-between border-b border-gray-100 bg-white/80 px-8 py-5 backdrop-blur-xl">
-      
+
       {/* SEARCH */}
       <div className="relative w-[380px]">
         <input
@@ -36,8 +47,6 @@ export default function Header() {
 
         {/* ICONS */}
         <div className="flex items-center gap-3">
-
-          {/* ICON ITEM */}
           {[
             {
               icon: <FiBell size={18} />,
@@ -69,7 +78,6 @@ export default function Header() {
               `}
             >
               {item.icon}
-
               <span className="
                 absolute -right-1 -top-1
                 flex h-5 w-5 items-center justify-center
@@ -92,18 +100,34 @@ export default function Header() {
             <p className="text-xs text-gray-400">
               Halo👋
             </p>
-
             <p className="text-sm font-semibold text-gray-700">
-              Ayu Sara
+              {profile?.full_name || user?.email || "User"}
             </p>
+            {profile?.tier && profile?.role === "Member" && (
+              <p className="text-xs font-medium text-emerald-600">
+                {profile.tier} • {profile.points} pts
+              </p>
+            )}
+            {profile?.role === "Admin" && (
+              <p className="text-xs font-medium text-blue-600 capitalize">
+                {profile.role}
+              </p>
+            )}
           </div>
 
-          <img
-            src="https://i.pravatar.cc/100"
-            alt="profile"
-            className="h-11 w-11 rounded-2xl object-cover"
-          />
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#00B074] text-sm font-bold text-white">
+            {(profile?.full_name || "U").charAt(0).toUpperCase()}
+          </div>
         </div>
+
+        {/* Logout */}
+        <button
+          onClick={handleLogout}
+          className="flex h-11 w-11 items-center justify-center rounded-2xl bg-red-50 text-red-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+          title="Logout"
+        >
+          <FiLogOut size={18} />
+        </button>
       </div>
     </div>
   );
